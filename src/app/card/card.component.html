@@ -1,0 +1,29 @@
+<div class="card">
+	<div class="card-header"
+	     [ngStyle]="{
+			fontSize:
+				this.title.length <= 4
+				? '28px'
+				: this.title.length <= 10
+					? '26px'
+					: this.title.length <= 20
+						? '24px'
+						: '22px'
+		 }"
+	     [class.card-header-error]="this.title.includes('error')">
+		{{ (cardIndex + 1) + ". " + title }}
+	</div>
+	<div class="card-body">
+		<div style="display: flex; flex-direction: row;">
+			<div style="margin-right: 10px">
+				<img style="width: 100px" [src]="imgSrc" alt="Card Image">
+			</div>
+			<div>
+				<div class="code pre">{{ body }}</div>
+				<input [(ngModel)]="title">
+				<div class="code pre">{{ this.card | json }}</div>
+				<div>{{ date | date:"medium":undefined:"ru" }}</div>
+			</div>
+		</div>
+	</div>
+</div>
